@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isometric College Station</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+        
+        #info {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #333;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 5px;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        #info h3 {
+            margin: 0 0 10px 0;
+            font-size: 18px;
+        }
+        
+        #info p {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+        }
+        
+        #reset-button {
+            background: #4a90e2;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        
+        #reset-button:hover {
+            background: #357abd;
+        }
+        
+        #reset-button:active {
+            background: #2868a8;
+        }
+        
+        /* Compact Weather and Time Panel */
+        #weather-time {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #333;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px 12px;
+            border-radius: 6px;
+            z-index: 100;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            min-width: 160px;
+            max-width: 180px;
+        }
+        
+        #weather-time h4 {
+            margin: 0 0 6px 0;
+            font-size: 12px;
+            color: #4a90e2;
+            border-bottom: 1.5px solid #4a90e2;
+            padding-bottom: 3px;
+        }
+        
+        #local-time {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin: 6px 0 3px 0;
+            line-height: 1.2;
+        }
+        
+        #local-date {
+            font-size: 10px;
+            color: #666;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+        
+        .weather-item {
+            display: flex;
+            align-items: center;
+            margin: 4px 0;
+            font-size: 11px;
+        }
+        
+        .weather-icon {
+            font-size: 14px;
+            margin-right: 6px;
+        }
+        
+        .weather-label {
+            color: #666;
+            margin-right: 4px;
+        }
+        
+        .weather-value {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        #data-source {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: #666;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 12px;
+            border-radius: 4px;
+            z-index: 100;
+            font-size: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        #loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #333;
+            font-size: 24px;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+    </style>
+  <script type="module" crossorigin src="/isometric_map/assets/index-gUPBprsC.js"></script>
+</head>
+<body>
+    <div id="info">
+        <h3>Isometric College Station</h3>
+        <p>Use mouse to rotate and zoom</p>
+        <button id="reset-button">Reset Camera</button>
+    </div>
+    
+    <!-- Compact Weather and Time Panel -->
+    <div id="weather-time">
+        <h4>📍 College Station, TX</h4>
+        <div id="local-time">--:--:--</div>
+        <div id="local-date">Loading...</div>
+        <div class="weather-item">
+            <span class="weather-icon">🌡️</span>
+            <span class="weather-label">Temp:</span>
+            <span class="weather-value" id="temperature">--°F</span>
+        </div>
+        <div class="weather-item">
+            <span class="weather-icon">💧</span>
+            <span class="weather-label">Humidity:</span>
+            <span class="weather-value" id="humidity">--%</span>
+        </div>
+        <div class="weather-item">
+            <span class="weather-icon">🌤️</span>
+            <span class="weather-label">Condition:</span>
+            <span class="weather-value" id="condition">--</span>
+        </div>
+    </div>
+    
+    <div id="data-source">
+        Data Source: OSM, 2025
+    </div>
+    
+    <div id="loading">Loading data...</div>
+    
+</body>
+</html>
